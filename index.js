@@ -34,6 +34,7 @@ async function initMap() {
     center: position1,
     mapId: "DEMO_MAP_ID",
     mapTypeId: 'satellite',
+    
   });
 
   // [END maps_add_map_instantiate_map]
@@ -42,13 +43,15 @@ async function initMap() {
   const playerIcon = new AdvancedMarkerElement({
     map: map,
     position: position1,
-    content: holeImg
+    content: holeImg,
+    gmpDraggable : true
   });
   // [END maps_add_map_instantiate_marker]
   const holeIcon = new AdvancedMarkerElement({
     map: map,
     position: position2,
-    content: golfballImg
+    content: golfballImg,
+    gmpDraggable : true
   });
 }
 
