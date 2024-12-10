@@ -1,3 +1,7 @@
+
+// ******* const haversine = require('haversine-distance') FOCUS ON THIS TO GET DISTANCE MEASURMENT
+console.log(x)
+
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
