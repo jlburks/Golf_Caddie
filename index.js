@@ -55,14 +55,16 @@ async function initMap() {
     gmpDraggable : true
   });
   var line = new google.maps.Polyline({path: [position1, position2], map: map});
+ 
 
   map.addListener('dragstart', function() {  
     console.log("hello")
     console.log(holeIcon.position, playerIcon.position)
     position1 = {lat:holeIcon.position.Fg, lng:holeIcon.position.Hg};
     position2 = { lat: playerIcon.position.Fg, lng: playerIcon.position.Hg };
+    line.setMap(null)
     line = new google.maps.Polyline({path: [position1, position2], map: map});
-
+    
   });
 }
 
