@@ -21,8 +21,8 @@ let map;
 async function initMap() {
   // [START maps_add_map_instantiate_map]
   // The location of Uluru
-  const position1 = {lat:29.58896624482934, lng:-95.3619};
-  const position2 = { lat: 29.58896624482934, lng: -95.36162478474299 };
+  let position1 = {lat:29.58896624482934, lng:-95.3619};
+  let position2 = { lat: 29.58896624482934, lng: -95.36162478474299 };
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
@@ -36,6 +36,7 @@ async function initMap() {
     mapTypeId: 'satellite',
     
   });
+
 
   // [END maps_add_map_instantiate_map]
   // [START maps_add_map_instantiate_marker]
@@ -53,7 +54,18 @@ async function initMap() {
     content: golfballImg,
     gmpDraggable : true
   });
+  var line = new google.maps.Polyline({path: [position1, position2], map: map});
+
+  map.addListener('dragstart', function() {  
+    console.log("hello")
+    console.log(holeIcon.position, playerIcon.position)
+    position1 = {lat:holeIcon.position.Fg, lng:holeIcon.position.Hg};
+    position2 = { lat: playerIcon.position.Fg, lng: playerIcon.position.Hg };
+    line = new google.maps.Polyline({path: [position1, position2], map: map});
+
+  });
 }
+
 
 initMap();
 // [END maps_add_map]
