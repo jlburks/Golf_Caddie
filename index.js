@@ -1,6 +1,6 @@
 
 // ******* const haversine = require('haversine-distance') FOCUS ON THIS TO GET DISTANCE MEASURMENT
-console.log(x)
+
 
 /**
  * @license
@@ -9,6 +9,11 @@ console.log(x)
  */
 // [START maps_add_map]
 // Initialize and add the map
+
+let distanceElem = document.getElementById("curDist")
+const curDistance = 0 
+
+distanceElem.innerHTML = curDistance
 
 const golfballImg = document.createElement("img");
 golfballImg.src =  "./img/blueball.jpg"
@@ -66,9 +71,22 @@ async function initMap() {
     console.log(holeIcon.position, playerIcon.position)
     position1 = {lat:holeIcon.position.Fg, lng:holeIcon.position.Hg};
     position2 = { lat: playerIcon.position.Fg, lng: playerIcon.position.Hg };
+    
     line.setMap(null)
     line = new google.maps.Polyline({path: [position1, position2], map: map});
-    
+    fetch('http://127.0.0.1:3001/calculateDistance',{
+      method:"POST",headers: {
+      'Content-Type': 'application/json'
+  },
+      body: JSON.stringify({ position1, position2 })})
+    .then(response => response.json())
+    .then((res) => {
+      console.log(res)
+      distanceElem.innerHTML = Math.round(res.distanceMeters * 1.09361)
+
+    }).catch((e)=>{
+      console.log(e)
+    })
   });
 }
 
