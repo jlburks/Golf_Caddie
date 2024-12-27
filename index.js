@@ -1,5 +1,14 @@
-
-// ******* const haversine = require('haversine-distance') FOCUS ON THIS TO GET DISTANCE MEASURMENT
+export const holeLocations = {
+  hole1: [29.588966244829354,-95.36162478474299],
+  hole2: [29.588966244829354,-95.36162478474299],
+  hole3: [29.588966244829354,-95.36162478474299],
+  hole4: [29.588966244829354,-95.36162478474299],
+  hole5: [29.588966244829354,-95.36162478474299],
+  hole6: [29.588966244829354,-95.36162478474299],
+  hole7: [29.588966244829354,-95.36162478474299],
+  hole8: [29.588966244829354,-95.36162478474299],
+  hole9: [29.588966244829354,-95.36162478474299],
+}
 
 
 /**
@@ -12,8 +21,31 @@
 
 let distanceElem = document.getElementById("curDist")
 const curDistance = 0 
+let holeNumber = 1;
 
-distanceElem.innerHTML = curDistance
+const curNumber = document.getElementById('curHoleNumber')
+curNumber.innerText = holeNumber
+
+const nextHole = document.getElementById('add')
+const prevHole = document.getElementById('sub')
+
+nextHole.addEventListener('click',function() {
+  if (holeNumber == 18){
+    return
+  }
+  holeNumber = holeNumber + 1
+  curNumber.innerText = holeNumber
+})
+
+prevHole.addEventListener('click',function() {
+  if (holeNumber == 1){
+    return
+  }
+  holeNumber = holeNumber - 1
+  curNumber.innerText = holeNumber 
+})
+
+distanceElem.innerHTML = curDistance  
 
 const golfballImg = document.createElement("img");
 golfballImg.src =  "./img/blueball.jpg"
@@ -30,8 +62,8 @@ let map;
 async function initMap() {
   // [START maps_add_map_instantiate_map]
   // The location of Uluru
-  let position1 = {lat:29.58896624482934, lng:-95.3619};
-  let position2 = { lat: 29.58896624482934, lng: -95.36162478474299 };
+  let position1 = {lat:holeLocations.hole1[0], lng:holeLocations.hole1[1]};
+  let position2 = { lat: holeLocations.hole1[0], lng:holeLocations.hole1[1] };
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
