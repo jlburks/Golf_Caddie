@@ -14,10 +14,7 @@ app.use(express.json())
 
 
 app.get('/getKey', function (req,res){
-    // const apiKey = process.env.API_KEY;
-    console.log("23--")
-    const apiKey = process.env.GOOGLE_API_KEY;
-    console.log("$$$$",apiKey)
+    const apiKey = process.env.API_KEY;
     res.json({ key: apiKey })
 })
 
