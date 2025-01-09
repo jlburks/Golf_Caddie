@@ -27,7 +27,7 @@ app.post('/calculateDistance', function (req, res) {
 });
 
 
-app.listen(PORT, function (err) {
+app.listen(PORT, "0.0.0.0", function (err) {
     if (err) console.log(err);
     console.log(`Server listening on PORT ${PORT}`);
 });
