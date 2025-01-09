@@ -100,12 +100,12 @@ prevHole.addEventListener('click',function() {
 distanceElem.innerHTML = curDistance  
 
 const golfballImg = document.createElement("img");
-golfballImg.src =  "./img/blueball.jpg"
+golfballImg.src =  "../img/blueball.jpg"
 golfballImg.width= "20"
 golfballImg.height="20"
 
 const holeImg = document.createElement("img");
-holeImg.src =  "./img/blackflag.jpg"
+holeImg.src =  "../img/blackflag.jpg"
 holeImg.width= "20"
 holeImg.height="20"
 
